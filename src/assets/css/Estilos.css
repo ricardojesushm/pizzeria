@@ -1,0 +1,361 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar_home{
+    display: flex;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    justify-content: space-between;
+    padding-block: 15px;
+    padding-inline: 100px;
+}
+
+.navbar_column_1{
+    display: flex;
+    gap: 40px;
+}
+
+.menu_principal{
+    display: flex;
+    gap: 30px;
+}
+
+.item_menu_principal{
+    display: flex;
+    gap: 5px;
+}
+
+.carrito_navbar{
+    display: flex;
+    gap: 5px;
+}
+
+.ico_menu_principal i{
+    color: rgb(208, 132, 0);
+}
+
+.ocultar{
+    display: none;
+}
+
+.encabezado{
+    background-image:linear-gradient(#00000070, #0000008f), url(../img/pizzeria_mamma_mia.webp);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.titulo_de_sitio{
+    font-size: 32px;
+}
+
+.subtitulo{
+    font-size: 18px;
+}
+
+.contenedor_card_pizza{
+    border-radius: 15px;
+    padding: 15px;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(30, 30, 30, 0.806);
+    color: white;
+}
+
+.imagen_card_pizza{
+    display: flex;
+    justify-content: center;
+}
+
+.imagen_card_pizza img{
+    width: 300px;
+    border-radius: 15px;
+}
+
+.titulo_card_pizza{
+    font-size: 23px;
+    padding-block: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo_descripcion{
+    font-size: 18px;
+    display: flex;
+    justify-content:left;
+    padding-bottom: 15px;
+    color: rgb(208, 132, 0)
+}
+
+.ingrediente_pizza{
+    display: flex;
+    gap: 5px;
+}
+
+.ingredientes_pizza{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ingredientes_pizza img{
+    width: 18px;
+    display: flex;
+}
+
+.separador_card{
+    margin-top: 15px;
+    background-color: white;
+    height: 1px;
+}
+
+.precio_pizza{
+    font-size: 23px;
+    padding-block: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.botones_card_pizza{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.boton_ver_mas{
+    padding-block: 5px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border-style: solid;
+    border-radius: 5px;
+    padding-inline: 10px;
+    border-color: white;
+}
+
+.boton_ver_mas:hover{
+    cursor: pointer;
+}
+
+.boton_carrito:hover{
+    cursor: pointer;
+}
+
+.boton_carrito{
+    padding-block: 5px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(208, 132, 0);
+    border-style: solid;
+    border-radius: 5px;
+    padding-inline: 10px;
+    border-color: rgb(208, 132, 0);
+}
+
+.contenedor_productos{
+    background-image:linear-gradient(#00000070, #0000008f), url(../img/fondo_pizzeria_mama_mia.webp);
+    background-size: cover;
+    display: grid;
+    row-gap: 20px;
+    justify-content: center;
+    padding-block: 30px;
+    grid-template-columns: 400px 400px 400px;
+}
+
+.pie_de_pagina{
+    display: flex;
+    justify-content: center;
+    padding-block: 15px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+
+/* ESTILO DE FORMULARIO */
+
+.contenedor_general{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image:linear-gradient(#00000070, #0000008f), url(../img/fondo_pizzeria_mama_mia.webp);
+    color: rgb(208, 132, 0);
+}
+
+.formulario_contenedor{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(30, 30, 30, 0.806);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.titulo_form{
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensaje_error{
+   color: rgb(255, 255, 255);
+   text-align: center;
+   padding-inline: 15px;
+   padding-block: 5px;
+   background-color: rgb(91, 1, 1);
+   border-radius: 15px;
+}
+
+.msj_confirmacion{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding-inline: 15px;
+    padding-block: 5px;
+    background-color: rgb(0, 93, 76);
+    border-radius: 15px;
+ }
+
+.formulario input{
+    padding-block: 5px;
+    border-radius: 15px;
+    border-style: solid;
+    font-size: 18px;
+    padding-inline: 10px;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.btn_enviar{
+    padding-inline: 30px;
+    padding-block: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgb(208, 132, 0);
+    border-radius: 15px;
+    color: rgb(208, 132, 0);
+    font-size: 16px;
+}
+
+/* CARRITO */
+
+.carrito_contenedor{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.contenedor_items_carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item_carrito{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.item_carrito_col1{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item_carrito_col1 img{
+    width: 100px;
+    border-radius: 7px;
+}
+
+.item_carrito_col2{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn_sumar, .btn_restar{
+    width: 35px;
+    height: 35px;
+    background-color: rgba(127, 255, 212, 0);
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.btn_pagar{
+    padding-inline: 20px;
+    padding-block: 10px;
+    background-color: rgba(127, 255, 212, 0);
+    border-style: solid;
+    border-radius: 7px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border-width: 0px;
+    font-size: 16px;
+}
+
+.btn_pagar i{
+    color: rgb(208, 132, 0);
+}
+
+.titulo_carrito, .total_carrito{
+    font-size: 26px;
+}
+
+.subtotal_items{
+    display: none;
+}
+
+/* VERSIÓN MÓVIL */
+
+@media(width <= 1000px){
+    .contenedor_productos{
+        grid-template-columns: 35% 35%;
+    }
+
+    .contenedor_card_pizza{
+        max-width: 230px;
+    }
+
+    .imagen_card_pizza img{
+        width: 230px;
+    }
+}
+
+@media(width <= 800px){
+    .contenedor_productos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contenedor_card_pizza{
+        max-width: 250px;
+    }
+
+    .imagen_card_pizza img{
+        width: 230px;
+    }
+}
+
