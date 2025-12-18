@@ -1,4 +1,3 @@
-
 import './components/Navbar'
 import './components/Home'
 import './components/Footer'
@@ -17,11 +16,11 @@ function App() {
   return (
     <>
     <Navbar></Navbar>
-    {/* <Home></Home> */}
+    <Home></Home>
     {/* <CardPizza></CardPizza> */}
     {/* <Registro></Registro> */}
     {/* <Login></Login> */}
-    <Carrito></Carrito>
+    {/* <Carrito></Carrito> */}
     <Footer></Footer>
     </>
   )
