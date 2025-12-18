@@ -1,22 +1,39 @@
-import React from 'react'
-import Header from './Header'
-import CardPizza from './CardPizza'
-import {pizzas} from '../assets/js/pizzas.js'
 
-export default function () {
+import React, { useEffect, useState } from 'react';
+import Header from './Header';
+import CardPizza from './CardPizza';
+
+
+export default function Home() {
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const res = await fetch('http://localhost:5001/api/pizzas');
+        const data = await res.json();
+        setPizzas(data);
+      } catch (error) {
+        console.error('Error al obtener pizzas:', error);
+      }
+    };
+    fetchPizzas();
+  }, []);
+
   return (
     <div>
-      <Header></Header>
-      {/* <div className='contenedor_productos'>
-        <CardPizza img='../src/assets/img/pizza-napolitana.webp' nombre='Napolitana' precio={5950} ingredientes={['Mozzarella','Tomates','Jamón','Orégano']}></CardPizza>
-        <CardPizza img='../src/assets/img/pizza-española.webp' nombre='Española' precio={6950} ingredientes={['Mozzarella','Gorgonzola','Parmesano','Provolone']}></CardPizza>
-        <CardPizza img='../src/assets/img/pizza-pepperoni.webp' nombre='Pepperoni' precio={6950} ingredientes={['Mozzarella','Pepperoni','Orégano']}></CardPizza>
-      </div> */}
+      <Header />
       <div className='contenedor_productos'>
-        {pizzas.map((pizza)=> (
-          <CardPizza img={pizza.img} nombre={pizza.name} precio={pizza.price} ingredientes={pizza.ingredients}></CardPizza>
+        {pizzas.map((pizza) => (
+          <CardPizza
+            key={pizza.id}
+            img={pizza.img}
+            nombre={pizza.name}
+            precio={pizza.price}
+            ingredientes={pizza.ingredients}
+          />
         ))}
       </div>
     </div>
-  )
+  );
 }
