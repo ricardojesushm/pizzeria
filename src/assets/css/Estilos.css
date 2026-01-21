@@ -28,6 +28,15 @@
     gap: 5px;
 }
 
+.text_item_menu_principal{
+    text-decoration: none;
+    color: white;
+}
+
+.active{
+    color:rgb(208, 132, 0);
+}
+
 .carrito_navbar{
     display: flex;
     gap: 5px;
@@ -325,6 +334,29 @@
 .subtotal_items{
     display: none;
 }
+
+/* PIZZA INDIVIDUAL */
+.pizza_individual{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+.info_pizza{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contenedor_pizza{
+    display: flex;
+    width: 80%;
+    gap: 50px;
+}
+.imagen_pizza img{
+    border-radius: 15px;
+}
+
 
 /* VERSIÓN MÓVIL */
 
