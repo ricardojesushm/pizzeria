@@ -160,6 +160,14 @@
     cursor: pointer;
 }
 
+.btn_pagar:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #ccc;
+  color: #888;
+  border: 1px solid #aaa;
+}
+
 .boton_carrito{
     padding-block: 5px;
     font-size: 18px;

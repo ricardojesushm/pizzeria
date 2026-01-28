@@ -1,12 +1,12 @@
 import React from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
 
 export default function CardPizza({id, img, nombre, precio='0', ingredientes}) {
-  // const navigate=useNavigate();
+  const navigate=useNavigate();
   const { agregarAlCarrito } = useContext(CartContext);
-  // const verMas=()=>{navigate(`/pizza/${id}`)};
+  const verMas=()=>{navigate(`/pizza/${id}`)};
   return (
     <div className='contenedor_card_pizza'>
       <div className='imagen_card_pizza'><img src={img}></img></div>
@@ -20,7 +20,7 @@ export default function CardPizza({id, img, nombre, precio='0', ingredientes}) {
           <div className='separador_card'></div>
           <div className='precio_pizza'>Precio: ${precio.toLocaleString()}</div>
           <div className='botones_card_pizza'>
-            <button id='ver_mas' className='boton_ver_mas'><i className="bi bi-search">&nbsp;Ver más</i></button>
+            <button id='ver_mas' className='boton_ver_mas' onClick={verMas}><i className="bi bi-search">&nbsp;Ver más</i></button>
             <button id='sumar_al_carrito' className='boton_carrito' onClick={() => agregarAlCarrito({id, img, nombre, precio, count: 1 })}><i className="bi bi-cart"></i>&nbsp;Añadir</button>
           </div>
         </div>
