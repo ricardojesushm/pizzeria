@@ -1,28 +1,39 @@
-import React from "react";
+
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 export default function Profile() {
-  // Datos fijos de ejemplo
+  const { token, setToken } = useContext(UserContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
+
   const nombre = "Ricardo";
   const email = "ricardo@pizzeria.com";
   const telefono = "987654321";
   const direccion = "Av. Italia 123";
+
   const onLogout = () => {
-    window.location.href = "/login";
+    setToken(false);
+    navigate("/login");
   };
   return (
     <div style={{
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      padding: 24,
+      justifyContent: "left",
       background: "#fff8f0",
-      borderRadius: 16,
       boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
       maxWidth: 400,
-      margin: "40px auto",
       width: "90vw",
-  // minHeight eliminado para que el contenedor no ocupe todo el alto
+      minHeight: "100vh",
+      paddingLeft: 24,
+      paddingTop: 24
     }}>
       <img
         src="../src/assets/img/icono-pizza.webp"

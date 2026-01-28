@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 
 export default function Pizza() {
   const [pizza, setPizza] = useState(null);
-
+  const { id } = useParams();
+  
   useEffect(() => {
     const fetchPizza = async () => {
       try {
-        const res = await fetch("http://localhost:5001/api/pizzas/p001");
+        const res = await fetch(`http://localhost:5001/api/pizzas/${id}`);
         const data = await res.json();
         setPizza(data);
       } catch (error) {
@@ -14,7 +17,7 @@ export default function Pizza() {
       }
     };
     fetchPizza();
-  }, []);
+  }, [id]);
 
   return (
     <div className="pizza_individual">

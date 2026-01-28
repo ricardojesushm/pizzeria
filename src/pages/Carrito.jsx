@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import UserContext from '../context/UserContext';
 
 export default function Carrito() {
     const { cart, agregarAlCarrito, restarDelCarrito } = useContext(CartContext);
     const [total, setTotal] = useState(0);
+    const {token} = useContext(UserContext);
 
     useEffect(() => {
         const suma = cart.reduce((acum, item) => acum + item.precio * item.count, 0);
@@ -41,7 +43,7 @@ export default function Carrito() {
                 ))}
             </div>
             <div className='total_carrito'>Total: $ {total.toLocaleString()}</div>
-            <button className='btn_pagar'><i className="bi bi-credit-card-fill"></i> Pagar</button>
+            <button className='btn_pagar' disabled={!token}><i className="bi bi-credit-card-fill"></i> Pagar</button>
         </section>
     )
 }

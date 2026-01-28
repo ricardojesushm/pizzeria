@@ -22,7 +22,6 @@ const CartProvider = ({ children }) => {
 
     }
 
-
     const restarDelCarrito = (pizzaId) => {
         const nuevoCart = cart.map(item => {
             if (item.id === pizzaId) {
