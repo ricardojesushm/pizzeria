@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function Pizza() {
   const [pizza, setPizza] = useState(null);
   const { id } = useParams();
-  
+  const { agregarAlCarrito } = useContext(CartContext);
+
   useEffect(() => {
     const fetchPizza = async () => {
       try {
@@ -45,7 +47,13 @@ export default function Pizza() {
             <div className="precio_pizza">
               Precio: ${pizza.price.toLocaleString()}
             </div>
-            <button id='sumar_al_carrito' className='boton_carrito'><i className="bi bi-cart"></i>&nbsp;Añadir</button>
+            <button
+              id="sumar_al_carrito"
+              className="boton_carrito"
+              onClick={() => agregarAlCarrito({ ...pizza, count: 1, precio: pizza.price, nombre: pizza.name })}
+            >
+              <i className="bi bi-cart"></i>&nbsp;Añadir
+            </button>
           </div>
         </div>
       ) : (

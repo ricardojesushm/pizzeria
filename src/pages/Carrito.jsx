@@ -6,10 +6,12 @@ export default function Carrito() {
     const { cart, agregarAlCarrito, restarDelCarrito } = useContext(CartContext);
     const [total, setTotal] = useState(0);
     const {token} = useContext(UserContext);
+    const [compraExitosa, setCompraExitosa] = useState(false);
 
     useEffect(() => {
         const suma = cart.reduce((acum, item) => acum + item.precio * item.count, 0);
         setTotal(suma);
+        setCompraExitosa(false); // Oculta el mensaje si el carrito cambia
     }, [cart]);
 
     function añadirItems(idPizza) {
@@ -23,9 +25,36 @@ export default function Carrito() {
         restarDelCarrito(idPizza);
     }
 
+    
+    const handlePagar = async () => {
+        try {
+            const response = await fetch("http://localhost:5001/api/checkouts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ cart }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setCompraExitosa(true);
+            } else {
+                alert(data.message || "Error al procesar el pago");
+            }
+        } catch (error) {
+            alert("Error de conexión con el servidor");
+        }
+    };
+
     return(
         <section className='carrito_contenedor'>
             <div className='titulo_carrito'>Detalles del pedido</div>
+            {compraExitosa && (
+                <div className="msj_confirmacion" style={{marginBottom: 16, textAlign: 'center'}}>
+                  ¡Compra realizada con éxito!
+                </div>
+            )}
             <div className='contenedor_items_carrito'>
                 {cart.map((itemCart) => (
                     <div className='item_carrito' key={itemCart.id}>
@@ -43,7 +72,7 @@ export default function Carrito() {
                 ))}
             </div>
             <div className='total_carrito'>Total: $ {total.toLocaleString()}</div>
-            <button className='btn_pagar' disabled={!token}><i className="bi bi-credit-card-fill"></i> Pagar</button>
+            <button className='btn_pagar' disabled={!token} onClick={handlePagar}><i className="bi bi-credit-card-fill"></i> Pagar</button>
         </section>
     )
 }
