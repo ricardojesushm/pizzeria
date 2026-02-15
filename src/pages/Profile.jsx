@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
 export default function Profile() {
-  const { token, setToken } = useContext(UserContext);
+  const { token, email, logout } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (!token) {
@@ -12,13 +12,8 @@ export default function Profile() {
     }
   }, [token, navigate]);
 
-  const nombre = "Ricardo";
-  const email = "ricardo@pizzeria.com";
-  const telefono = "987654321";
-  const direccion = "Av. Italia 123";
-
   const onLogout = () => {
-    setToken(false);
+    logout();
     navigate("/login");
   };
   return (
@@ -42,10 +37,7 @@ export default function Profile() {
       />
       <h2 style={{ margin: 0, color: "#b22222", fontSize: 28, textAlign: "center" }}>Perfil de usuario</h2>
       <div style={{ width: "100%", margin: "18px 0 24px 0", color: "#333", fontSize: 17 }}>
-        <div style={{ marginBottom: 8 }}><strong>Nombre:</strong> {nombre}</div>
         <div style={{ marginBottom: 8 }}><strong>Email:</strong> {email}</div>
-        <div style={{ marginBottom: 8 }}><strong>Teléfono:</strong> {telefono}</div>
-        <div style={{ marginBottom: 8 }}><strong>Dirección:</strong> {direccion}</div>
       </div>
       <button
         onClick={onLogout}

@@ -1,16 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import '../assets/css/Estilos.css'
-import { NavLink, useNavigate } from 'react-router-dom';
-import { createContext } from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import '../assets/css/Estilos.css';
 import { CartContext } from '../context/CartContext';
 import UserContext from '../context/UserContext';
 
 export default function Navbar() {
   const { sumaTotalcarrito } = useContext(CartContext);
   const total = sumaTotalcarrito;
-  const { token, setToken } = useContext(UserContext);
+  const { token, logout } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div className='navbar_home'>
@@ -23,19 +20,19 @@ export default function Navbar() {
             <div className='ico_menu_principal'><i className="bi bi-house-door-fill"></i></div>
             <div><NavLink to="/" className={({isActive})=>(isActive?'text_item_menu_principal active':'text_item_menu_principal')}>Inicio</NavLink></div>
           </div>
-          <div className={token==false?'ocultar':'item_menu_principal'} id='perfil_menu'>
+          <div className={!token?'ocultar':'item_menu_principal'} id='perfil_menu'>
             <div className='ico_menu_principal'><i className="bi bi-person-fill"></i></div>
             <div><NavLink to="/profile" className={({isActive})=>(isActive?'text_item_menu_principal active':'text_item_menu_principal')}>Perfil</NavLink></div>
           </div>
-          <div className={token==false?'ocultar':'item_menu_principal'}>
+          <div className={!token?'ocultar':'item_menu_principal'}>
             <div className='ico_menu_principal'><i className="bi bi-lock-fill"></i></div>
-            <div><Link onClick={() => {setToken(false); navigate("/login")}} className='text_item_menu_principal'>Cerrar Sesión</Link></div>
+            <div><Link onClick={() => {logout(); navigate("/login")}} className='text_item_menu_principal'>Cerrar Sesión</Link></div>
           </div>
-          <div className={token==true?'ocultar':'item_menu_principal'}>
+          <div className={token?'ocultar':'item_menu_principal'}>
             <div className='ico_menu_principal'><i className="bi bi-unlock-fill"></i></div>
             <div><NavLink to="/login" className={({isActive})=>(isActive?'text_item_menu_principal active':'text_item_menu_principal')}>Login</NavLink></div>
           </div>
-          <div className={token==true?'ocultar':'item_menu_principal'}>
+          <div className={token?'ocultar':'item_menu_principal'}>
             <div className='ico_menu_principal'><i className="bi bi-pencil-square"></i></div>
             <div><NavLink to="/registro" className={({isActive})=>(isActive?'text_item_menu_principal active':'text_item_menu_principal')}>Registro</NavLink></div>
           </div>
